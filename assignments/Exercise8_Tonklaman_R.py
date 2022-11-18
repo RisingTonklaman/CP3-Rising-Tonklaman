@@ -9,11 +9,14 @@ if Username=="Tonkla" and Password=="123456":
     if Menu==1:
         List=int(input("How many do you want:"))
         print("Total prise are ",List*25)
-    if Menu==2:
+        print("Thank you for purchasing ")
+    elif Menu==2:
         List=int(input("How many do you want:"))
         print("Total prise are ",List*30)
-    if Menu==3:
+        print("Thank you for purchasing ")
+    elif Menu==3:
         List=int(input("How many do you want:"))
         print("Total prise are ",List*40)
-    print("Thank you for purchasing ")
+        print("Thank you for purchasing ")
+    else :  print("You have made an incorrect .")
 else : print("You do not have to access")
