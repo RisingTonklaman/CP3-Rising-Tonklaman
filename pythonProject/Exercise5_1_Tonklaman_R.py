@@ -1,6 +1,0 @@
-x=input("Enter you x:")
-y=input("Enter you y:")
-print(x+"+"+y+"=",int(x)+int(y))
-print(x+"-"+y+"=",int(x)-int(y))
-print(x+"*"+y+"=",int(x)*int(y))
-print(x+"/"+y+"=",int(x)/int(y))
