@@ -6,24 +6,31 @@ def login(usernameInput,passwordInput):
     else:
         return False
 def showMenu():
-print("----- iShop -----")
-print("1. Vat Calculator")
-print("2. Price Calculator")
-userSelected = int(input(">>"))
+    print("Done !")
+    print("----- iShop -----")
+    print("1. Vat Calculator")
+    print("2. Price Calculator")
+def vatCalculator(totalPrice):
+    price = int(input("Price (THB) : "))
+    vat = 7
+    result = price + (price * vat / 100)
+    return result
+def priceCalculator():
+    price1 = int(input("First Product Price : "))
+    price2 = int(input("Second Product Price : "))
+    return print(price1 + price2)
+def menuSelect(userSelected):
+    if userSelected == 1 :
+        return vatCalculator(totalPrice)
+    elif userSelected == 2 :
+        return priceCalculator()
 if login(usernameInput,passwordInput)==True :
-    print(showMenu())
-    def menuSelect(userSelected):
-        if userSelected == 1 :
-            return vatCalculator(totalPrice)
-        else: userSelected == 2
-            return priceCalculator() :
-    def vatCalculator(totalPrice):
-        price = int(input("Price (THB) : "))
-        vat = 7
-        result = price + (price * vat / 100)
-        return result
+    showMenu()
+    userSelected = int(input(">>"))
+    menuSelect(userSelected)
 
-    def priceCalculator():
-        price1 = int(input("First Product Price : "))
-        price2 = int(input("Second Product Price : "))
-        return print(price1 + price2)
+
+
+
+
+
