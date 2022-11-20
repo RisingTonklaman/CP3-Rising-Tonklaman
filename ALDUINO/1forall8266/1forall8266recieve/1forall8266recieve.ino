@@ -4,10 +4,11 @@
 // Structure example to receive data
 // Must match the sender structure
 typedef struct test_struct {
-    int x;
-    int y;
-    uint8_t Hopper; //= WiFi.macAddress();
+    String x ;
+    String y ;
+    uint8_t SupHopper[4][6];
 } test_struct;
+test_struct test;
 test_struct myData;
 
 // Callback function that will be executed when data is received
@@ -20,7 +21,7 @@ void OnDataRecv(uint8_t * mac, uint8_t *incomingData, uint8_t len) {
   Serial.print("y: ");
   Serial.println(myData.y);
     Serial.print("MCDONALD: ");
-  Serial.println(myData.Hopper);
+  Serial.println(myData.SupHopper[4][6]);
   Serial.println();
 }
  

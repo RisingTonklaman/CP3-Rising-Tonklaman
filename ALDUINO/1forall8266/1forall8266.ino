@@ -6,12 +6,12 @@ uint8_t broadcastAddress1[] = {0x58, 0xBF, 0x25, 0xD7, 0x6A, 0x28};
 //uint8_t broadcastAddress2[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 typedef struct test_struct {
-  int x;
-  int y;
-  String Hopper;
-  uint8_t macHopper;
+    String MACHopper ;
+    String Hopper ;
+    uint8_t SupHopper[4][6];
 } test_struct;
 test_struct test;
+test_struct myData;
 
 /*unsigned long lastTime = 0;
   unsigned long timerDelay = 2000;  // send readings timer*/
