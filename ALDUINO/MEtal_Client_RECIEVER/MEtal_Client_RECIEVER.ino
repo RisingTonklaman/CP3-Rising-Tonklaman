@@ -16,7 +16,7 @@ const char* serverNameDestroy = "http://192.168.4.1/METSU";
 const char* serverNameDeath = "http://192.168.4.1/BOU";
 const char* serverNameLightning = "http://192.168.4.1/JINRAI";
 #include <Wire.h>
-//AsyncWebServer server(80);
+AsyncWebServer server(80);
 String METSU;
 String BOU;
 String JINRAI;
@@ -27,12 +27,13 @@ int i;
 bool state;
 uint8_t broadcastAddress[4][6];
 typedef struct test_struct {
-    String MACHopper ;
+    String MACHopper =AssultMETSU ;
     String Hopper ;
     uint8_t SupHopper[4][6];
 } test_struct;
 test_struct test;
 test_struct myData;
+//const String index_html[] PROGMEM = "METSU,BOU,JIN"; // large char array, tested with 14k
 /*void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus) {
   char macStr[18];
   Serial.print(" send status: ");
@@ -50,11 +51,11 @@ void setup() {
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
- // WiFi.begin(ssid, password);
-  /*while (WiFi.status() != WL_CONNECTED) {
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
-  }*/
+  }
   Serial.println("");
   Serial.println("Connected to WiFi");
   WiFi.mode(WIFI_STA);
@@ -68,9 +69,8 @@ void setup() {
     }*/
     esp_now_set_self_role(ESP_NOW_ROLE_SLAVE);
   esp_now_register_recv_cb(OnDataRecv);
-  
 delay(500);
-     /*if ((WiFiMulti.run() == WL_CONNECTED)) {
+     if ((WiFiMulti.run() == WL_CONNECTED)) {
       METSU = httpGETRequest(serverNameDestroy);
       BOU = httpGETRequest(serverNameDeath);
       JINRAI = httpGETRequest(serverNameLightning);
@@ -104,7 +104,7 @@ delay(500);
     }
     else {
       Serial.println("WiFi Disconnected");
-    }*/
+    }
 }
 void OnDataRecv(uint8_t * mac, uint8_t *incomingData, uint8_t len) {
   memcpy(&myData, incomingData, sizeof(myData));
