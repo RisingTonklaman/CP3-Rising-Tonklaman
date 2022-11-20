@@ -10,18 +10,18 @@ def showMenu():
     print("----- iShop -----")
     print("1. Vat Calculator")
     print("2. Price Calculator")
-def vatCalculator(totalPrice):
+def vatCalculator():
     price = int(input("Price (THB) : "))
     vat = 7
     result = price + (price * vat / 100)
-    return result
+    return print(result)
 def priceCalculator():
     price1 = int(input("First Product Price : "))
     price2 = int(input("Second Product Price : "))
     return print(price1 + price2)
 def menuSelect(userSelected):
     if userSelected == 1 :
-        return vatCalculator(totalPrice)
+        return vatCalculator()
     elif userSelected == 2 :
         return priceCalculator()
 if login(usernameInput,passwordInput)==True :
