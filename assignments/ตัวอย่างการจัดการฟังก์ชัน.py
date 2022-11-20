@@ -1,3 +1,5 @@
+import math
+
 usernameInput = input("Username : ")
 passwordInput = input("Password : ")
 def login(usernameInput,passwordInput):
@@ -28,6 +30,7 @@ if login(usernameInput,passwordInput)==True :
     showMenu()
     userSelected = int(input(">>"))
     menuSelect(userSelected)
+    math.cos()
 
 
 
