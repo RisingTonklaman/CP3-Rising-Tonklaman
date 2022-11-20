@@ -71,9 +71,9 @@ void setup() {
   esp_now_register_recv_cb(OnDataRecv);
 delay(500);
      if ((WiFiMulti.run() == WL_CONNECTED)) {
-     /* METSU = httpGETRequest(serverNameDestroy);
+      METSU = httpGETRequest(serverNameDestroy);
       BOU = httpGETRequest(serverNameDeath);
-      JINRAI = httpGETRequest(serverNameLightning);*/
+      JINRAI = httpGETRequest(serverNameLightning);
       Serial.println("Metsu: " + METSU + " *C - BOU: " + BOU + " % - JINRAI: " + JINRAI + " hPa");
       METSUBOUJINRAI=JINRAI;
       BOU=BOU+1;
@@ -82,10 +82,10 @@ delay(500);
       WiFi.disconnect();
       WiFi.softAP(ssid, password);
 
-  /*IPAddress IP = WiFi.softAPIP();
+  IPAddress IP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
-  Serial.println(IP);*/
-  /*server.on("/JINRAI", HTTP_GET, [](AsyncWebServerRequest *request){
+  Serial.println(IP);
+  server.on("/JINRAI", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", METSUBOUJINRAI.c_str());
   });
     server.on("/METSU", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -93,7 +93,7 @@ delay(500);
     request->send_P(200, "text/plain", AssultMETSU.c_str());
   });
     server.on("/BOU", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", BOU.c_str());});*/
+    request->send_P(200, "text/plain", BOU.c_str());});
   server.begin();
       delay(10000);
   Serial.println("---------------------------------------------------------------------------------------------------------------------");
@@ -134,7 +134,7 @@ void loop() {
   delay(900);
 }
 
-/*String httpGETRequest(const char* serverName) {
+String httpGETRequest(const char* serverName) {
   WiFiClient client;
   HTTPClient http;
     
@@ -154,4 +154,4 @@ void loop() {
   http.end();
 
   return payload;
-}*/
+}
