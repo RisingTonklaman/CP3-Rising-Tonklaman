@@ -2,13 +2,13 @@
 #include <WiFiClientSecure.h>
 #include "Max6675.h"
 //----------------------------------------
-
-Max6675 ts(4, 5, 16);
+String Celsiust;
+Max6675 ts(21, 22, 23);
 
 
 //----------------------------------------SSID dan Password wifi mu gan.
-const char* ssid = "YourSSID"; //--> Nama Wifi / SSID.
-const char* password = "YourPassword"; //-->  Password wifi .
+const char* ssid = "OPPO A5s"; //--> Nama Wifi / SSID.
+const char* password = "123456123"; //-->  Password wifi .
 //----------------------------------------
 
 //----------------------------------------Host & httpsPort
@@ -17,7 +17,7 @@ const int httpsPort = 443;
 
 WiFiClientSecure client; //--> Create a WiFiClientSecure object.
 
-String GAS_ID = "AKfycbwOmvKrkVv6dluliiNExlcy0gIBy4vgVrfmKmlgFkjIuRlRi8v6FrisoQCv1UGyZwRMig"; //--> spreadsheet script ID
+String GAS_ID = "AKfycby9gahfOoYGgD6XpLXxvqlSdRbvmCCot8Oh4s2S4mKCkt56ahK-N9-sPtklQ3gQZPq1pw"; //--> spreadsheet script ID
 
 //============================================ void setup
 void setup() {
@@ -55,12 +55,15 @@ void loop() {
   
     
    Serial.print(ts.getCelsius(), 2);
+   Celsiust=ts.getCelsius(), 2;
    Serial.print(" C ");
-   delay(300);
+   Serial.println(Celsiust);
+   delay(1000);
+   sendData(Celsiust);
  
 }
 
-void sendData(float value) {
+void sendData(String Celsiust) {
   Serial.println("==========");
   Serial.print("connecting to ");
   Serial.println(host);
@@ -70,11 +73,8 @@ void sendData(float value) {
     Serial.println("connection failed");
     return;
   }
-
-
-  float string_temp = value; 
   
-  String url = "/macros/s/" + GAS_ID + "/exec?temp=" + string_temp; 
+  String url = "/macros/s/" + GAS_ID + "/exec?temp=" + Celsiust; 
   Serial.print("requesting URL: ");
   Serial.println(url);
 
@@ -94,14 +94,14 @@ void sendData(float value) {
       break;
     }
   }
-  String line = client.readStringUntil('\n');
+ /* String line = client.readStringUntil('\n');
   if (line.startsWith("{\"state\":\"success\"")) {
     Serial.println("esp8266/Arduino CI successfull!");
   } else {
     Serial.println("esp8266/Arduino CI has failed");
-  }
+  }*/
   Serial.print("reply was : ");
-  Serial.println(line);
+  //Serial.println(line);
   Serial.println("closing connection");
   Serial.println("==========");
   Serial.println();
