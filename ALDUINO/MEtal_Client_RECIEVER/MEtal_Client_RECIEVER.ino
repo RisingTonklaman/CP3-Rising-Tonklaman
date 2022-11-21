@@ -67,8 +67,8 @@ void setup() {
   /*for(i=0;i<=3;i++){
     esp_now_add_peer(broadcastAddress[i], ESP_NOW_ROLE_SLAVE, 1, NULL, 0);
     }*/
-    esp_now_set_self_role(ESP_NOW_ROLE_SLAVE);
-  esp_now_register_recv_cb(OnDataRecv);
+    //esp_now_set_self_role(ESP_NOW_ROLE_SLAVE);
+  //esp_now_register_recv_cb(OnDataRecv);
 delay(500);
      if ((WiFiMulti.run() == WL_CONNECTED)) {
       METSU = httpGETRequest(serverNameDestroy);
