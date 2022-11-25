@@ -75,7 +75,7 @@ void setup_wifi()
   Serial.println(WiFi.localIP());
 }
 
-void callback(char* topic, byte* payload, unsigned int length)
+void callback(char* topic, String* payload, unsigned int length)
 {
   
   Serial.print("Message arrived [");
@@ -108,7 +108,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     for (int i = 0; i < length; i++) {
       
       
-     if ((char)payload[i] == J)
+     if (payload == J)
     {digitalWrite(Relay1, HIGH);
     digitalWrite(Relay2, HIGH);
     digitalWrite(Relay3, HIGH);
@@ -162,11 +162,11 @@ void callback(char* topic, byte* payload, unsigned int length)
   else if ( strstr(topic, sub4))
   {
     for (int i = 0; i < length; i++) {
-      Serial.println((char)payload[i]);
+//      Serial.println((char)payload[i]);
     }
     Serial.println("relay4");
     // Switch on the LED if an 1 was received as first character
-    (char)payload[0] != status_sub4;
+    //(char)payload[0] != status_sub4;
     status_sub4 =! status_sub4;
     if (status_sub4 == true) {
       digitalWrite(Relay4, HIGH);   // Turn the LED on (Note that LOW is the voltage level
