@@ -1,5 +1,4 @@
 import math
-
 usernameInput = input("Username : ")
 passwordInput = input("Password : ")
 def login(usernameInput,passwordInput):
